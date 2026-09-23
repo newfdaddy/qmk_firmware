@@ -103,7 +103,7 @@ the appropriate key for an indicator.
   //    RGB_MATRIX_INDICATOR_SET_COLOR(l,255,0,0);
   //  }
   //}
-  if (IS_LAYER_ON(1)) {
+  if (IS_LAYER_ON(1) || IS_LAYER_ON(3)) {
     // Set the indicator on right shift
     RGB_MATRIX_INDICATOR_SET_COLOR(KB_FUNCTION_LED,255,0,0);
     // Highlight keys with macro things (keypad 4,5,1,2)
@@ -114,6 +114,7 @@ the appropriate key for an indicator.
     // highlight escape and grave/tic (set red for bootloader and reset)
     RGB_MATRIX_INDICATOR_SET_COLOR(0,255,0,0);
     RGB_MATRIX_INDICATOR_SET_COLOR(16,255,0,0);
+    RGB_MATRIX_INDICATOR_SET_COLOR(37,255,0,0); //tab
     // highlight media keys
     RGB_MATRIX_INDICATOR_SET_COLOR(5,0,255,0);
     RGB_MATRIX_INDICATOR_SET_COLOR(6,0,255,0);
@@ -123,29 +124,11 @@ the appropriate key for an indicator.
     RGB_MATRIX_INDICATOR_SET_COLOR(10,0,255,0);
     RGB_MATRIX_INDICATOR_SET_COLOR(11,0,255,0);
     // light up F1 to indicate layer 1 in use (pc/linux)
-    RGB_MATRIX_INDICATOR_SET_COLOR(1,255,255,255);
-  }
-  if (IS_LAYER_ON(3)) {
-    // Set the indicator on right shift
-    RGB_MATRIX_INDICATOR_SET_COLOR(KB_FUNCTION_LED,255,0,0);
-    // Highlight keys with macro things (keypad 4,5,1,2)
-    RGB_MATRIX_INDICATOR_SET_COLOR(71,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(87,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(72,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(88,0,255,0);
-    // highlight escape and grave/tic (set red for bootloader and reset)
-    RGB_MATRIX_INDICATOR_SET_COLOR(0,255,0,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(16,255,0,0);
-    // highlight media keys
-    RGB_MATRIX_INDICATOR_SET_COLOR(5,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(6,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(7,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(8,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(9,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(10,0,255,0);
-    RGB_MATRIX_INDICATOR_SET_COLOR(11,0,255,0);
-    // light up F3 to indicate layer 3 in use (macos)
-    RGB_MATRIX_INDICATOR_SET_COLOR(3,255,255,255);
+    if (IS_LAYER_ON(1)) {
+      RGB_MATRIX_INDICATOR_SET_COLOR(1,255,255,255);
+    } else {
+      RGB_MATRIX_INDICATOR_SET_COLOR(3,255,255,255);
+    }
   }
   return false;
 }
